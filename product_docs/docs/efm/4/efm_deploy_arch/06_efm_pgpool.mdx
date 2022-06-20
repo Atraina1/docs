@@ -18,7 +18,7 @@ the automatic failover of EDB Pgpool-II is disabled, and Failover Manager is con
 
 ![Failover Manager with Pgpool on-premises](images/efm_with_pgpool_on_premises.png)
 
-<div style=ini-align: center">Figure 5: Failover Manager's traffic routing using EDB Pgpool-II on-premises</div>
+<div style="text-align: center">Figure 5: Failover Manager's traffic routing using EDB Pgpool-II on-premises</div>
 
 ## Failover Manager with EDB Pgpool-II in the cloud
 
@@ -27,7 +27,7 @@ the traffic over all available EDB Pgpool-II instances without requiring a VIP.
 
 ![Failover Manager with Pgpool in cloud](images/efm_with_pgpool_on_cloud.png)
 
-<div style=ini-align: center">Figure 6: Failover Manager's traffic routing using EDB Pgpool-II in cloud</div>
+<div style="text-align: center">Figure 6: Failover Manager's traffic routing using EDB Pgpool-II in cloud</div>
 
 ## Using Failover Manager with EDB Pgpool-II 
 
@@ -78,6 +78,7 @@ properties in the cluster properties file:
 
     pgpool.bin = Absolute path of pgpool bin directory
 ```
+
 ### Configuring EDB Pgpool-II
 
 You can configure some important parameters in the
@@ -115,7 +116,6 @@ makes the read queries distributed equally among all nodes.
     backend_weight2 = 1
 
     backend_flag2 = 'ALLOW_TO_FAILOVER'
-
 ```
 
 #### Enabling load balancing and streaming replication mode
@@ -139,6 +139,7 @@ Set the following configuration parameter in the `pgpool.conf` file to enable lo
 
         load_balance_mode = on
     ```
+
 #### Disabling health checking and failover
 
 Health checking and failover are handled by Failover Manager, so disable them on the EDB Pgpool-II side. To disable the
@@ -156,7 +157,6 @@ values:
     failover_command = ''
 
     failback_command = ''
-
 ```
 
 Ensure the following while setting up the values in the pgpool.conf
@@ -220,8 +220,6 @@ and takes charge as the leader EDB Pgpool-II instance.
 For Failover Manager / EDB Pgpool-II integration using the network load balancer in
 AWS or Azure, you need to perform some additional steps.
 
-<div id="sg_rules_pgpool" class="registered_link"></div>
-
 Add the following rules to the security groups to be used by the EDB Pgpool-II instances:
 
 -   Rules for the security group to be used by the EDB Pgpool-II instances (SG
@@ -273,8 +271,6 @@ traffic, the network load balancer redistributes all the
 traffic to the remaining two EDB Pgpool-II processes. Make sure that the
 `listen_backlog_multiplier` parameter is tuned to compensate for the
 higher number of connections in case of failover.
-
-<div id="config_nlb_aws" class="registered_link"></div>
 
 #### Configuring NLB in AWS
 
