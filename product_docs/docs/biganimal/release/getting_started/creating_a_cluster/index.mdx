@@ -76,6 +76,9 @@ Prior to creating your cluster, make sure you have enough resources. Without eno
 
       - For Ultra Disk, in **Volume Properties**, select the disk size and IOPS for your cluster. BigAnimal calculates the throughput based on your IOPS settings. 
 
+        !!!important
+        While setting the required IOPS for the disk you should consider the VM limits that are tied to the VM size that you have selected. See [Ultra disk IOPS](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types#ultra-disk-iops) for more information.
+
     - For AWS, BigAnimal currently supports General Purpose SSD (GP3) storage. In **Volume Properties**, select the disk size for your cluster. 
 
 1.  In the **Networking Connectivity** section, you specify whether to use private or public networking. Networking is set to **Public** by default. Public means that any client can connect to your cluster’s public IP address over the internet. Optionally, you can limit traffic to your public cluster by specifying an IP allowlist, which allows access only to certain blocks of IP addresses. To limit access, add one or more classless inter-domain routing (CIDR) blocks in the **IP Allowlists** section. CIDR is a method for allocating IP addresses and IP routing to a whole network or subnet. If you have any CIDR block entries, access is limited to those IP addresses. If none are specified, all network traffic is allowed. 
